@@ -8,8 +8,8 @@
       <el-carousel-item v-for="(item, index) in banners" :key="index">
         <div
           class="banner-image"
-          :style="`
-                background:url(${item.url}) center center no-repeat;
+          :style="` 
+                background:url(${$axios.defaults.baseURL + item.url}) center center no-repeat;
                 background-size:contain contain;
                 `"
         ></div>
@@ -23,18 +23,27 @@ export default {
     data(){
         return{
             banners:[
-                {
-                    url:"http://pic.rmb.bdstatic.com/261eff52c418c89a79d0b5a59ec143de.jpeg"
-                },
-                 {
-                    url:"http://img0.imgtn.bdimg.com/it/u=1722683143,3909236625&fm=26&gp=0.jpg"
-                },
-                 {
-                    url:"http://05.imgmini.eastday.com/mobile/20180517/c0f4b98ce9bf70ea03497870fca1e0f4_wmk.jpeg"
-                }
+                // {
+                //     url:"http://pic.rmb.bdstatic.com/261eff52c418c89a79d0b5a59ec143de.jpeg"
+                // },
+                //  {
+                //     url:"http://img0.imgtn.bdimg.com/it/u=1722683143,3909236625&fm=26&gp=0.jpg"
+                // },
+                //  {
+                //     url:"http://05.imgmini.eastday.com/mobile/20180517/c0f4b98ce9bf70ea03497870fca1e0f4_wmk.jpeg"
+                // }
             ]
         }
-    }
+    },
+     mounted(){
+        this.$axios({
+            url: "/scenics/banners"
+        }).then(res => {
+            const {data} = res.data;
+            this.banners = data;
+        })
+    }  
+    
 };
 </script>
 
@@ -53,4 +62,4 @@ export default {
         height:100%;
     }
 }
-</style>
+</style>                                                                            

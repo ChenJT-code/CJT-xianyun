@@ -49,6 +49,7 @@
 export default {
   data() {
     return {
+      // 轮播图数据
       banners: [
         // {
         //     url:"http://pic.rmb.bdstatic.com/261eff52c418c89a79d0b5a59ec143de.jpeg"
@@ -93,8 +94,21 @@ export default {
     });
   },
   methods: {
-    handleOption(index) {},
-    handleSearch() {}
+    handleOption(index) {
+       // 设置当前tab
+    this.currentOption = index;
+
+    // 如果切换的机票tab，那么直接跳转到机票首页
+    const item = this.options[index];
+    if(item.name === "机票"){
+        return this.$router.push(item.pageUrl);
+    }
+    },
+    handleSearch() {
+       const item = this.options[this.currentOption];
+    // 跳转时候给对应的页面url加上搜索内容参数
+    this.$router.push(item.pageUrl + this.searchValue);
+    }
   }
 };
 </script>

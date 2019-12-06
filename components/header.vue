@@ -5,7 +5,8 @@
             <!-- logo -->
             <div class="logo">
                 <nuxt-link to="/">
-                    <img src="http://157.122.54.189:9093/images/logo.jpg" alt="">
+                    <!-- <img src="http://157.122.54.189:9093/images/logo.jpg" alt=""> -->
+                    <img src="../assets/Logo.png" alt="">
                 </nuxt-link>
             </div>
 
@@ -70,12 +71,16 @@ export default {
         }
 
         .logo{
+            position: relative;
             width:156px;
             padding-top:8px;
 
             img{
-                display: block;
+                // display: block;
+                height: 70px;
                 width:100%;
+                position: absolute;
+                top: -11px;
             }
         }
 

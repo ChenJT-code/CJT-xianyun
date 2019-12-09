@@ -36,7 +36,11 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui'
+    '@/plugins/element-ui',
+    	    // 这里面要注意,这个 localStorage 只能用在浏览器环境
+    // '@/plugins/localStorage'
+    //ssr是服务端渲染，不需要，这里是浏览器
+    { src: '@/plugins/localStorage', ssr: false }
   ],
 
   /*
